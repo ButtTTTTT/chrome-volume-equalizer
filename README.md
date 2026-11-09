@@ -27,3 +27,4 @@ A store-free, Manifest V3 Chrome Extension for real-time tab volume boosting (`0
 2. Open Google Chrome and navigate to `chrome://extensions/`.
 3. Enable **Developer mode** in the top-right corner.
 4. Click **Load unpacked** in the top-left corner and select the `chrome-volume-equalizer` folder.
+
