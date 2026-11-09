@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Volume &amp; Equalizer Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand-row">
+        <div class="brand-title">
+          <span class="pulse-dot" id="statusDot"></span>
+          <h1>Dynamic Volume &amp; EQ</h1>
+        </div>
+        <button id="resetBtn" class="btn-reset" title="Reset tab audio to 100% default">Reset</button>
+      </div>
+      <div class="tab-subtitle" id="currentTabTitle">Loading current tab...</div>
+    </header>
+
+    <section class="card volume-card">
+      <div class="section-header">
+        <span class="section-label">Master Volume Boost</span>
+        <span class="volume-badge" id="volumeValueText">100%</span>
+      </div>
+      <input
+        type="range"
+        id="volumeSlider"
+        class="volume-slider"
+        min="0"
+        max="600"
+        step="5"
+        value="100"
+      >
+      <div class="scale-marks">
+        <span>0%</span>
+        <span>100%</span>
+        <span>300%</span>
+        <span>600%</span>
+      </div>
+      <div class="quick-buttons">
+        <button class="chip-btn" data-vol="mute" id="muteBtn">Mute</button>
+        <button class="chip-btn" data-vol="100">100%</button>
+        <button class="chip-btn" data-vol="150">150%</button>
+        <button class="chip-btn" data-vol="200">200%</button>
+        <button class="chip-btn" data-vol="300">300%</button>
+        <button class="chip-btn" data-vol="600">600%</button>
+      </div>
+    </section>
+
+    <section class="card dynamic-card">
+      <div class="dynamic-row">
+        <div class="dynamic-info">
+          <div class="dynamic-title">Auto Dynamic Leveler</div>
+          <div class="dynamic-desc">Boosts quiet speech &amp; caps sudden loud peaks automatically</div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="compressorToggle">
+          <span class="slider-toggle"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="card eq-card">
+      <div class="section-header">
+        <span class="section-label">Audio Presets &amp; 3-Band EQ</span>
+        <span class="preset-tag" id="activePresetLabel">Flat</span>
+      </div>
+      <div class="preset-grid">
+        <button class="preset-btn active" data-preset="flat">Flat</button>
+        <button class="preset-btn" data-preset="voice">Voice Boost</button>
+        <button class="preset-btn" data-preset="bass">Bass Boost</button>
+        <button class="preset-btn" data-preset="cinema">Cinema Auto</button>
+        <button class="preset-btn" data-preset="night">Night Mode</button>
+      </div>
+
+      <div class="eq-sliders">
+        <div class="eq-row">
+          <label for="bassSlider">Bass (100Hz)</label>
+          <input type="range" id="bassSlider" min="-12" max="12" step="1" value="0">
+          <span class="eq-val" id="bassVal">0 dB</span>
+        </div>
+        <div class="eq-row">
+          <label for="midSlider">Vocal (1kHz)</label>
+          <input type="range" id="midSlider" min="-12" max="12" step="1" value="0">
+          <span class="eq-val" id="midVal">0 dB</span>
+        </div>
+        <div class="eq-row">
+          <label for="trebleSlider">Treble (8kHz)</label>
+          <input type="range" id="trebleSlider" min="-12" max="12" step="1" value="0">
+          <span class="eq-val" id="trebleVal">0 dB</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card tabs-card">
+      <div class="section-header">
+        <span class="section-label">Active Audio Tabs</span>
+      </div>
+      <div id="audioTabsList" class="tabs-list">
+        <div class="empty-tabs">No other tabs playing audio</div>
+      </div>
+    </section>
+
+    <div id="statusNotice" class="status-notice hidden"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,377 @@
+/* 全局弹窗基础容器样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 360px;
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  user-select: none;
+}
+
+.app-container {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 顶部标题栏样式 */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-title h1 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.2px;
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #64748b;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pulse-dot.active {
+  background-color: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+}
+
+.tab-subtitle {
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-reset {
+  background: rgba(239, 68, 68, 0.14);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-reset:hover {
+  background: rgba(239, 68, 68, 0.28);
+  color: #ffffff;
+}
+
+/* 通用卡片容器样式 */
+.card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.volume-badge {
+  font-size: 14px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.volume-badge.boosted {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.14);
+  border-color: rgba(74, 222, 128, 0.35);
+}
+
+.volume-badge.muted {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.14);
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+/* 主音量滑块与刻度样式 */
+.volume-slider {
+  width: 100%;
+  height: 6px;
+  accent-color: #38bdf8;
+  cursor: pointer;
+}
+
+.scale-marks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+
+.chip-btn {
+  background: #0f172a;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip-btn:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.chip-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #38bdf8;
+}
+
+.chip-btn.muted-active {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #f87171;
+}
+
+/* 自动动态均衡开关区域样式 */
+.dynamic-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dynamic-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.dynamic-desc {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-toggle {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #334155;
+  transition: 0.2s;
+  border-radius: 22px;
+}
+
+.slider-toggle::before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #ffffff;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider-toggle {
+  background-color: #8b5cf6;
+}
+
+.switch input:checked + .slider-toggle::before {
+  transform: translateX(18px);
+}
+
+/* 音效预设与三段均衡器样式 */
+.preset-tag {
+  font-size: 11px;
+  color: #c084fc;
+  font-weight: 600;
+}
+
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.preset-btn {
+  background: #0f172a;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 2px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.preset-btn:hover {
+  color: #e2e8f0;
+  border-color: #64748b;
+}
+
+.preset-btn.active {
+  background: rgba(139, 92, 246, 0.22);
+  color: #d8b4fe;
+  border-color: #8b5cf6;
+}
+
+.eq-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.eq-row {
+  display: grid;
+  grid-template-columns: 82px 1fr 44px;
+  align-items: center;
+  gap: 8px;
+}
+
+.eq-row label {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.eq-row input[type="range"] {
+  width: 100%;
+  height: 5px;
+  accent-color: #8b5cf6;
+  cursor: pointer;
+}
+
+.eq-val {
+  font-size: 11px;
+  color: #cbd5e1;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 活动音频标签页列表样式 */
+.tabs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 92px;
+  overflow-y: auto;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 5px 8px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.tab-item:hover {
+  border-color: #38bdf8;
+}
+
+.tab-item-title {
+  font-size: 11px;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 230px;
+}
+
+.tab-item-vol {
+  font-size: 11px;
+  font-weight: 600;
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+.empty-tabs {
+  font-size: 11px;
+  color: #64748b;
+  text-align: center;
+  padding: 4px 0;
+}
+
+/* 底部提示消息栏样式 */
+.status-notice {
+  font-size: 11px;
+  color: #fde047;
+  background: rgba(234, 179, 8, 0.12);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  border-radius: 6px;
+  padding: 6px 8px;
+  line-height: 1.4;
+}
+
+.status-notice.hidden {
+  display: none;
+}
+
